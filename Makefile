@@ -1,18 +1,20 @@
-TARGET = R4RPG
-OBJS = main.o
+TARGET = hello-world
+OBJS = ./src/main.o ./src/common/callback.o
 
-CFLAGS = 
-CXXFLAGS = $(CFLAGS) -std=c++14 -fno-rtti
-ASFLAGS = $(CFLAGS)
+INCDIR =
+CFLAGS = -O2 -G0 -Wall
+CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti
+ASFLAGS	= $(CFLAGS)
 
-# PSP Stuff
-BUILD_PRX = 1
-PSP_FW_VERSION = 660
-PSP_LARGE_MEMORY = 1
+LIBDIR =
+LIBS =
+LDFLAGS	=
 
 EXTRA_TARGETS = EBOOT.PBP
-PSP_EBOOT_TITLE = R4RPG
-PSP_EBOOT_ICON = ICON0.PNG
+PSP_EBOOT_TITLE = HelloWorld
+PSP_EBOOT_ICON= ./res/ICON0.png
+#PSP_EBOOT_PIC1= ./res/PIC1.png
+#PSP_EBOOT_SND0= ./res/SND0.at3
 
 PSPSDK = $(shell psp-config --pspsdk-path)
 include $(PSPSDK)/lib/build.mak
