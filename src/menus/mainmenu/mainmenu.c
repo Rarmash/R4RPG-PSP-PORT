@@ -1,26 +1,28 @@
-#pragma once
 #include <pspkernel.h>
 #include <pspdebug.h>
 #include <pspctrl.h>
-#include "menu_stats.h"
+#include "../../common/callback.h"
+#include "../menu_stats/menu_stats.h"
+
+#define printf pspDebugScreenPrintf
 
 void mainmenu() {
     pspDebugScreenClear();
-    pspDebugScreenPrintf("---\n");
-    pspDebugScreenPrintf("Choose what to do!\n");
-    pspDebugScreenPrintf("---\n");
-    pspDebugScreenPrintf("CROSS -  Go fight!\n");
-    pspDebugScreenPrintf("TRIANGLE - Check your stats!\n");
-    pspDebugScreenPrintf("CIRCLE - Upgrade your character!\n");
-    pspDebugScreenPrintf("SQUARE - Open shop!\n");
-    pspDebugScreenPrintf("HOME - Close the game\n");
+    printf("---\n");
+    printf("Choose what to do!\n");
+    printf("---\n");
+    //printf("CROSS -  Go fight! [UNDONE]\n");
+    printf("TRIANGLE - Check your stats!\n");
+    //printf("CIRCLE - Upgrade your character! [UNDONE]\n");
+    //printf("SQUARE - Open shop! [UNDONE]\n");
+    printf("HOME - Close the game\n");
 
     sceCtrlSetSamplingCycle(0);
     sceCtrlSetSamplingMode(PSP_CTRL_MODE_ANALOG);
 
     SceCtrlData ctrlData;
 
-    while(true){
+    while(isRunning()){
         sceCtrlReadBufferPositive(&ctrlData, 1);
         //if(ctrlData.Buttons & PSP_CTRL_CROSS) {
         //    menu_fight();
